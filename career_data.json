@@ -1,0 +1,22 @@
+{
+  "10th": {
+    "subcategories": ["Intermediate", "Diploma", "Vocational Courses", "Specialized Training"],
+    "roadmap": "Choose streams like MPC, BiPC, Computer Science, or Arts to align with your career aspirations. Ideal for students planning further academic pursuits."
+  },
+  "Intermediate": {
+    "subcategories": ["MPC", "BIPC", "Computer Science", "Commerce", "Arts", "Vocational Studies"],
+    "roadmap": "Focus on foundational subjects to prepare for competitive exams and higher education."
+  },
+  "Degree": {
+    "subcategories": ["Engineering", "Medicine", "Commerce", "Arts", "Science", "Management", "Law"],
+    "roadmap": "Pursue B.Tech, BE, or B.Arch in diverse branches like AI, Civil, Mechanical, Aerospace, or Environmental Engineering. Involves innovation and practical problem-solving."
+  },
+  "Diploma": {
+    "subcategories": ["Engineering", "Fashion Design", "Hotel Management", "Nursing", "Graphic Design", "Automobile Mechanics", "Digital Marketing"],
+    "roadmap": "Master design concepts, textiles, and tailoring techniques for a career in apparel design and fashion merchandising."
+  },
+  "Vocational Courses": {
+    "subcategories": ["Electrician", "Plumbing", "Beauty and Wellness", "Carpentry", "Auto Mechanics", "Culinary Arts", "Welding", "Coding Bootcamps"],
+    "roadmap": "Train in makeup, skincare, and spa services for roles in salons, wellness centers, or independent entrepreneurship."
+  }
+}

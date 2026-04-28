@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Career Pathways</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    body {
+        /* Full page background color with a soft gradient */
+        background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 800px;
+        width: 100%;
+    }
+
+    .card {
+        border: none;
+        border-radius: 25px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        background-color: white; /* Keeps the content area clean */
+        overflow: hidden;
+    }
+
+    .header-section {
+        background: linear-gradient(45deg, #1d976c, #93f9b9); /* Professional Green */
+        color: white;
+        padding: 40px;
+        text-align: center;
+    }
+
+    .roadmap-container {
+        background-color: #f1f8f1;
+        border-radius: 15px;
+        padding: 25px;
+        border-left: 8px solid #1d976c;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+    <div class="container" style="max-width: 800px;">
+        <div class="card">
+            <div class="header-section">
+                <h2>Career Recommendation System</h2>
+                <p>Follow the steps from your guide to see your roadmap</p>
+            </div>
+            <div class="card-body p-5">
+                <label class="fw-bold mb-2">Select Education Level:</label>
+                <select id="eduSelect" class="form-select mb-4" onchange="getResults()">
+                    <option value="">--Select--</option>
+                    <option value="10th">10th</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Degree">Degree</option>
+                    <option value="Diploma">Diploma</option>
+                    <option value="Vocational Courses">Vocational Courses</option>
+                </select>
+
+                <div id="results" style="display:none;">
+                    <h5 class="text-dark">Available Subcategories:</h5>
+                    <ul id="subList" class="list-group mb-4"></ul>
+
+                    <div class="roadmap-container">
+                        <h5 class="text-success fw-bold">Roadmap:</h5>
+                        <p id="roadmapText" class="mb-0"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getResults() {
+            const level = document.getElementById('eduSelect').value;
+            const resBox = document.getElementById('results');
+            if (!level) { resBox.style.display = 'none'; return; }
+
+            fetch('/get_recommendation', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({level: level})
+            })
+            .then(res => res.json())
+            .then(data => {
+                resBox.style.display = 'block';
+                const list = document.getElementById('subList');
+                list.innerHTML = "";
+                data.subcategories.forEach(item => {
+                    let li = document.createElement('li');
+                    li.className = 'list-group-item';
+                    li.textContent = item;
+                    list.appendChild(li);
+                });
+                document.getElementById('roadmapText').innerText = data.roadmap;
+            });
+        }
+    </script>
+</body>
+</html>
