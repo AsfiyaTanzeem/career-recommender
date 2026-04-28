@@ -32,5 +32,5 @@ def diploma():
 def vocational():
     return render_template('vocational.html')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+##if __name__ == '__main__':
+    ##app.run(debug=True)
